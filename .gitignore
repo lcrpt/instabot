@@ -1,0 +1,6 @@
+node_modules
+.DS_STORE
+.env
+.env.test
+yarn-error.log
+src/cookies/*.json

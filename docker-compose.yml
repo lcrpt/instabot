@@ -1,0 +1,52 @@
+version: '3'
+services:
+    node-instabot-liker:
+        container_name: node-instabot-liker
+        build: ./node-instabot-liker
+        environment:
+          DB_HOST: "mongodb://mongo:27017"
+          DB_NAME: "instabotTest"
+          INSTABOT_SCRAPP_USER: "leopold_testing"
+          INSTABOT_SCRAPP_PASS: "Kjkszpj$$5"
+          LIKE_MAX_MINUTES: 15
+          LIKE_MIN_MINUTES: 5
+          DAILY_LIKE: 1400
+          LIKE_DELAY_MAX: 5000
+          LIKE_DELAY_MIN: 1000
+        command: make run
+        restart: always
+        volumes:
+          - ./node-instabot-liker/src:/app/src
+        links:
+          - mongo
+    node-instabot-scrapper:
+        container_name: node-instabot-scrapper
+        build: ./node-instabot-scrapper
+        environment:
+          DB_HOST: "mongodb://mongo:27017"
+          DB_NAME: "instabotTest"
+          INSTABOT_SCRAPP_USER: "leopold_testing"
+          INSTABOT_SCRAPP_PASS: "Kjkszpj$$5"
+        command: make run
+        restart: always
+        volumes:
+          - ./node-instabot-scrapper/src:/app/src
+        links:
+          - mongo
+    node-instabot-logger:
+        container_name: node-instabot-logger
+        build: ./node-instabot-logger
+        environment:
+          DB_HOST: "mongodb://mongo:27017"
+          DB_NAME: "instabotTest"
+        command: make run
+        restart: always
+        volumes:
+          - ./node-instabot-logger/src:/app/src
+        links:
+          - mongo
+    mongo:
+        container_name: mongo
+        image: mongo
+        ports:
+            - "27017:27017"
