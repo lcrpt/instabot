@@ -8,9 +8,9 @@ services:
           DB_NAME: "instabotTest"
           INSTABOT_SCRAPP_USER: "leopold_testing"
           INSTABOT_SCRAPP_PASS: "Kjkszpj$$5"
-          LIKE_MAX_MINUTES: 15
-          LIKE_MIN_MINUTES: 5
-          DAILY_LIKE: 1400
+          LIKE_MAX_MINUTES: 2
+          LIKE_MIN_MINUTES: 1
+          DAILY_LIKE: 5000
           LIKE_DELAY_MAX: 5000
           LIKE_DELAY_MIN: 1000
         command: make run
