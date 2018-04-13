@@ -14,6 +14,7 @@ const device = new Client.Device(user);
 const storage = new Client.CookieFileStorage(__dirname + `/cookies/${user}.json`);
 
 async function handler(hashtag) {
+	console.log('ping scrapper');
 	try {
 		await mongodb.init();
 

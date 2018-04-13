@@ -13,6 +13,8 @@ const device = new Client.Device(user);
 const storage = new Client.CookieFileStorage(__dirname + `/cookies/${user}.json`);
 
 async function handler() {
+    console.log('ping liker');
+
     return Client.Session.create(device, storage, user, pass).then(async (session) => {
         const instagramId = await patchAndFetchPost();
 

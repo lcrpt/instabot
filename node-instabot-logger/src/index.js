@@ -14,6 +14,8 @@ new job('00 00 12 * * *', async () => {
 }, null, true, 'Europe/Paris');
 
 async function handler({ type, minutes }) {
+    console.log('ping logger');
+
     await mongodb.init();
 
     const startDate = new Date(moment().subtract(minutes, 'minutes').format());
