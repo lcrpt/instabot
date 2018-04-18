@@ -35,6 +35,8 @@ function delayRequest(i) {
 }
 
 function resolver({ timer, likeCount }) {
+    console.log({ timer, likeCount });
+
     return new Promise(resolve => {
         setTimeout(() => {
             for (let i = 0; i < likeCount; i++) {
