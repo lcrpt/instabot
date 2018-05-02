@@ -10,5 +10,10 @@ module.exports.init = () => {
 
         module.exports.db = db;
         return db;
+    }).catch(err => {
+        throw new Error({
+            message: 'Connection to mongo db error',
+            error: err
+        });
     });
 };

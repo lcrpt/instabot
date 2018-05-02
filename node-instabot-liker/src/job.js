@@ -20,7 +20,10 @@ const BEFORE_TIME = moment('08:00:00', FORMAT);
 const AFTER_TIME = moment('20:00:00', FORMAT);
 
 function computeTimer() {
-    const timer = (Math.floor(Math.random() * (LIKE_MAX_MINUTES - LIKE_MIN_MINUTES + 1) + LIKE_MIN_MINUTES)) * 60 * 1000;
+    const timer = (
+        Math.floor(
+            Math.random() * (LIKE_MAX_MINUTES - LIKE_MIN_MINUTES + 1) + LIKE_MIN_MINUTES)
+        ) * 60 * 1000;
 
     return {
         timer,

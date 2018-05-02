@@ -21,7 +21,6 @@ module.exports = [
 	'offshore',
 	'surferphotos',
 	'surfphotography',
-	'magicseaweed',
 	'surfreport',
 	'drone',
 	'nature',
