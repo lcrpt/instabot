@@ -1,4 +1,3 @@
-const moment = require('moment');
 const assert = require('assert');
 const liker = require('./liker');
 
@@ -15,9 +14,6 @@ const LIKE_DELAY_MIN = Number(process.env.LIKE_DELAY_MIN);
 const DAILY_LIKE = Number(process.env.DAILY_LIKE);
 const HALF_DAY = 43200000;
 
-const FORMAT = 'hh:mm:ss';
-const BEFORE_TIME = moment('08:00:00', FORMAT);
-const AFTER_TIME = moment('20:00:00', FORMAT);
 
 function computeTimer() {
     const timer = (
@@ -38,8 +34,6 @@ function delayRequest(i) {
 }
 
 function resolver({ timer, likeCount }) {
-    console.log({ timer, likeCount });
-
     return new Promise(resolve => {
         setTimeout(() => {
             for (let i = 0; i < likeCount; i++) {
@@ -53,10 +47,6 @@ function resolver({ timer, likeCount }) {
 
 async function jobRunner({ timer, likeCount }) {
     await resolver({ timer, likeCount });
-
-    const time = moment(moment().format(FORMAT), FORMAT);
-
-    if (time.isBetween(BEFORE_TIME, AFTER_TIME)) jobRunner(computeTimer());
 }
 
 module.exports = {
