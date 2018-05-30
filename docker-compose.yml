@@ -4,7 +4,7 @@ services:
         container_name: node-instabot-liker
         build: ./node-instabot-liker
         environment:
-          DB_HOST: "mongodb://127.0.0.1:27017"
+          DB_HOST: "mongodb://mongo:27017"
           DB_NAME: "instabot"
           INSTABOT_SCRAPP_USER: "leo_dls_"
           INSTABOT_SCRAPP_PASS: "Kjkszpj$$@5"
@@ -16,13 +16,14 @@ services:
         command: make run
         restart: always
         volumes:
-          - ./node-instabot-liker/src:/app/
-        network_mode: "host"
+          - ./node-instabot-liker/src:/app/src
+        links:
+          - mongo
     node-instabot-scrapper:
         container_name: node-instabot-scrapper
         build: ./node-instabot-scrapper
         environment:
-          DB_HOST: "mongodb://127.0.0.1:27017"
+          DB_HOST: "mongodb://mongo:27017"
           DB_NAME: "instabot"
           INSTABOT_SCRAPP_USER: "leopold_testing"
           INSTABOT_SCRAPP_PASS: "Kjkszpj$$5"
@@ -30,15 +31,22 @@ services:
         restart: always
         volumes:
           - ./node-instabot-scrapper/src:/app/src
-        network_mode: "host"
+        links:
+          - mongo
     node-instabot-logger:
         container_name: node-instabot-logger
         build: ./node-instabot-logger
         environment:
-          DB_HOST: "mongodb://127.0.0.1:27017"
+          DB_HOST: "mongodb://mongo:27017"
           DB_NAME: "instabot"
         command: make run
         restart: always
         volumes:
           - ./node-instabot-logger/src:/app/src
-        network_mode: "host"
+        links:
+          - mongo
+    mongo:
+        container_name: mongo
+        image: mongo
+        ports:
+            - "27017:27017"
