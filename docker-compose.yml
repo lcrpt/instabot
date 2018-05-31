@@ -45,6 +45,18 @@ services:
           - ./node-instabot-logger/src:/app/src
         links:
           - mongo
+    node-instabot-mongo:
+        container_name: node-instabot-mongo
+        build: ./node-instabot-mongo
+        environment:
+          DB_HOST: "mongodb://mongo:27017"
+          DB_NAME: "instabot"
+        command: make run
+        restart: always
+        volumes:
+          - ./node-instabot-mongo/src:/app/src
+        links:
+          - mongo
     mongo:
         container_name: mongo
         image: mongo

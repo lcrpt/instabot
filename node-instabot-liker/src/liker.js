@@ -32,21 +32,24 @@ async function handler() {
                     await mongodb.db.collection('errors').insertOne({
                         app: 'liker',
                         from: 'Client.Like',
-                        error: err
+                        error: err,
+                        createdAt: new Date()
                     });
                 });
         }).catch(async err => {
             await mongodb.db.collection('errors').insertOne({
                 app: 'liker',
                 from: 'Client.Session.create',
-                error: err
+                error: err,
+                createdAt: new Date()
             });
         });
     } catch (err) {
         await mongodb.db.collection('errors').insertOne({
             app: 'liker',
             from: 'Handler.liker',
-            error: err
+            error: err,
+            createdAt: new Date()
         });
     }
 
@@ -55,14 +58,14 @@ async function handler() {
 
 async function patchAndFetchPost() {
     const [{ instagramId }] = await mongodb.db.collection('posts')
-    .find({
-        liked: false,
-        photoOfYou: false
-    })
-    .sort({ createdAt: -1 })
-    .limit(1)
-    .project({ instagramId: 1, _id: 0 })
-    .toArray();
+        .find({
+            liked: false,
+            photoOfYou: false
+        })
+        .sort({ createdAt: -1 })
+        .limit(1)
+        .project({ instagramId: 1, _id: 0 })
+        .toArray();
 
     await mongodb.db.collection('posts').updateOne(
         { instagramId },

@@ -5,7 +5,6 @@ module.exports = [
 	'surftrip',
 	'trip',
 	'travel',
-	'travelgram',
 	'adventure',
 	'explore',
 	'surflife',
@@ -22,7 +21,6 @@ module.exports = [
 	'surferphotos',
 	'surfphotography',
 	'surfreport',
-	'drone',
 	'nature',
 	'ocean'
 ];

@@ -6,7 +6,7 @@ const FORMAT = 'hh:mm:ss';
 const BEFORE_TIME = moment('08:00:00', FORMAT);
 const AFTER_TIME = moment('20:00:00', FORMAT);
 
-function sleep(ms) {
+async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
