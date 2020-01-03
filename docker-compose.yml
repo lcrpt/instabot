@@ -6,8 +6,8 @@ services:
         environment:
           DB_HOST: "mongodb://mongo:27017"
           DB_NAME: "instabot"
-          INSTABOT_SCRAPP_USER: "leo_dls_"
-          INSTABOT_SCRAPP_PASS: "Kjkszpj$$@5"
+          INSTABOT_SCRAPP_USER: "xxx"
+          INSTABOT_SCRAPP_PASS: "xxx"
           LIKE_MAX_MINUTES: 15
           LIKE_MIN_MINUTES: 10
           DAILY_LIKE: 1400
@@ -25,8 +25,8 @@ services:
         environment:
           DB_HOST: "mongodb://mongo:27017"
           DB_NAME: "instabot"
-          INSTABOT_SCRAPP_USER: "leopold_testing"
-          INSTABOT_SCRAPP_PASS: "Kjkszpj$$5"
+          INSTABOT_SCRAPP_USER: "xxx"
+          INSTABOT_SCRAPP_PASS: "xxx"
         command: make run
         restart: always
         volumes:
