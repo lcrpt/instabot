@@ -9,7 +9,7 @@
         "assert": "^1.4.1",
         "dotenv": "^5.0.1",
         "instagram-private-api": "^0.6.7",
-        "moment": "^2.22.0",
+        "moment": "^2.29.2",
         "mongodb": "^3.0.4"
     },
     "devDependencies": {
